@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { TimelineMax } from 'gsap';
+import gsap from 'gsap';
+
 const HamburgerMenu = () => {
   const hamburger = useRef(null);
   const top = useRef(null);
@@ -7,52 +8,65 @@ const HamburgerMenu = () => {
   const bottom = useRef(null);
   const [menuClicked, setMenuClickedAction] = useState(null);
   const [tl] = useState(
-    new TimelineMax({
+    gsap.timeline({
       paused: true,
       reversed: true,
     }),
   );
 
   useEffect(() => {
+    // setMenuClickedAction(
+
+    // tl.from(mid.current, {
+    //   x: 9,
+    //   ease: 'back',
+    // });
     setMenuClickedAction(
       tl.add('s'),
       tl
         .to(
           top.current,
           0.2,
-          { y: '-9px', transformOrigin: '50% 50%' },
-          hamburger.current,
+          {
+            y: '-2px',
+            transformOrigin: '50% 50%',
+          },
+          '<',
         )
         .to(
           bottom.current,
           0.2,
-          { y: '9px', transformOrigin: '50% 50%' },
-          hamburger.current,
+          {
+            y: '2px',
+            transformOrigin: '50% 50%',
+          },
+          '<',
         )
         .to(
           mid.current,
           0.2,
-          { scale: 0.1, transformOrigin: '50% 50%' },
-          hamburger.current,
+          {
+            scale: 0.1,
+            transformOrigin: '50% 50%',
+          },
+          '<',
         )
         .add('rotate')
         .to(top.current, 0.2, { y: '5' }, 'rotate')
         .to(bottom.current, 0.2, { y: '-5' }, 'rotate')
-        .to(
-          top.current,
-          0.2,
-          { rotationZ: 45, transformOrigin: '50% 50%' },
-          'rotate',
-        )
-        .to(
-          bottom.current,
-          0.2,
-          { rotationZ: -45, transformOrigin: '50% 50%' },
-          'rotate',
-        ),
+        .to(top.current, 0.2, {
+          rotationZ: 45,
+          transformOrigin: '50% 50%',
+        })
+        .to(bottom.current, 0.2, {
+          rotationZ: -45,
+          transformOrigin: '50% 50%',
+        }),
+      // .fromTo('#side-menu', { visibility: 'visible', duration: 2 }),
     );
     // .set('#burger .mid.current', {opacity:0})//temp fix for stupid iOS rotate y bug
   }, [tl]);
+
   return (
     <svg
       width="30"

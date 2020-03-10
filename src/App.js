@@ -49,7 +49,7 @@ import HamburgerMenu from './components/Hamburger';
 function App() {
   return (
     <Container>
-      <SideMenu>
+      <SideMenu id="side-menu">
         <div className="logo">
           <img src={logo} alt="logo" />
         </div>
@@ -135,7 +135,7 @@ function App() {
       </SideMenu>
       <MainContent>
         <div className="hero">
-          <HamburgerMenu />
+          {/* <HamburgerMenu /> */}
           <div className="featured__song">
             <button className="featured_song_button">
               Featured Song Of This Month
