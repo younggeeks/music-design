@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Container from './components/styled/Container.styled';
 import SideMenu from './components/styled/SideMenu.styled';
@@ -47,6 +47,9 @@ import ForwardReverse from './components/styled/ForwardReverse.styled';
 import Slider from './components/styled/Slider.styled';
 import HamburgerMenu from './components/Hamburger';
 function App() {
+  useEffect(() => {
+    document.title = 'Music APP';
+  }, []);
   return (
     <Container>
       <SideMenu id="side-menu">

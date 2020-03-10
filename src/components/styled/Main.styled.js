@@ -71,6 +71,10 @@ const MainContent = styled.div`
   }
   .top-right {
     &__menu {
+      @media only screen and (max-width: 600px) {
+        top: 1px;
+        right: 5px;
+      }
       position: absolute;
       top: 10px;
       right: 25px;
